@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+build/
+dist/
+out/
+release/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# KiCad
+*.kicad_prl
+*.kicad_pcb-bak
+*.bak
+*-backups/
