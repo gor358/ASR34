@@ -1,68 +1,272 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>ASR34 / Aegisel</title>
-	<meta name="generator" content="LibreOffice 25.2.7.2 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2026-01-19T01:12:53.580392800"/>
-	<meta name="" content=""/>
-	<style type="text/css">
-		h1 { color: #0055aa; line-height: 150%; text-align: center }
-		h1.cjk { font-family: "Arial", sans-serif }
-		h1.ctl { font-family: "Arial", sans-serif }
-		p { color: #000000; line-height: 150%; font-family: "Arial", sans-serif; font-size: 14pt }
-		h3 { color: #0055aa; line-height: 150%; text-align: center }
-		a:link { color: #0070f3; text-decoration: none }
-		a:visited { color: #0070f3; text-decoration: none }
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASR34 Developer Kit | Aegisel</title>
+  <meta name="description" content="ASR34 is a limited-run SDR developer kit for advanced RF experimentation, rapid prototyping, and customer-specific integration." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111824;
+      --panel-2: #0f1620;
+      --text: #e8eef5;
+      --muted: #b7c4d3;
+      --line: #223042;
+      --accent: #6ea8ff;
+      --accent-2: #8db4ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(11,15,20,0.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .hero {
+      padding: 78px 0 56px;
+    }
+    .eyebrow {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      max-width: 820px;
+    }
+    .lead {
+      max-width: 820px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #08111d;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #39495d;
+      color: var(--text);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    .section {
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 1.7rem;
+    }
+    .section p {
+      color: var(--muted);
+      max-width: 880px;
+      margin: 0 0 14px;
+    }
+    ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      max-width: 880px;
+    }
+    li { margin: 8px 0; }
+    .quote {
+      background: var(--panel-2);
+      border-left: 3px solid var(--accent);
+      padding: 18px 18px 18px 20px;
+      border-radius: 12px;
+      color: var(--text);
+      max-width: 880px;
+      margin-top: 18px;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 42px;
+      color: #95a7b8;
+      font-size: 0.94rem;
+    }
+    .small {
+      font-size: 0.92rem;
+      color: #9fb0bf;
+    }
+    @media (max-width: 860px) {
+      .cards { grid-template-columns: 1fr; }
+      .nav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-<body lang="en-US" text="#000000" link="#0070f3" vlink="#0070f3" bgcolor="#f0f0f0" dir="ltr"><h1 class="western" align="center">
-<span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff">Software-Defined
-Radio Transceiver </span><font color="#0055aa"><font face="Liberation Sans, sans-serif"><font size="6" style="font-size: 24pt"><b><span style="background: #ffffff">ASR34</span></b></font></font></font><span style="background: #ffffff">
-</span></span>
-</h1>
-<p align="center"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff">compact
-hardware platform, designed for experimentation, signal intelligence,
-and rapid prototyping in defense, research, and education. </span></span>
-</p>
-<p align="center"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff"><img src="asr34_assembled.jpg" name="Image1" alt="ASR34 Assembled" align="bottom" width="1125" height="792" border="0"/>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">AEGISEL / ASR34</div>
+      <nav class="navlinks">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#format">Design Data</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-</span></span>
-</p>
-<h3 align="center"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff">Key
-Features</span></span></h3>
-<ul>
-	<li><p align="center" style="margin-bottom: 0in"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff">Architecture
-	based on USRP1 with integrated Basic RX and Basic TX daughterboards </span></span>
-	</p></li>
-	<li><p align="center" style="margin-bottom: 0in"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff">Altera
-	Cyclone FPGA</span></span></p></li>
-	<li><p align="center"><span style="display: inline-block; border: none; padding: 0in"><em><span style="background: #ffffff">EZ</span></em><span style="background: #ffffff">-</span><em><span style="background: #ffffff">USB</span></em><span style="background: #ffffff">™
-	FX2LP </span><span style="background: #ffffff">Periferal Controller
-	Interface</span><span style="background: #ffffff"> </span></span>
-	</p></li>
-	<li><p align="center"><span style="display: inline-block; border: none; padding: 0in"><a href="mailto:info@aegisel.com"><span style="background: #ffffff">info@aegisel.com</span></a></span></p>
-	<p align="center"><span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff"><img src="ae_logo.jpg" name="Image2" align="bottom" width="96" height="24" border="0"/>
-</span></span></p>
-	<p align="center"><span style="display: inline-block; border: none; padding: 0in"><font size="2" style="font-size: 10pt"><span style="background: #ffffff">The
-	</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">L</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">ogo
-	</span></font><font size="2" style="font-size: 10pt"><b><span style="background: #ffffff">ae</span></b></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">
-	and B</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">rand
-	</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">N</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">ame
-	</span></font><font size="2" style="font-size: 10pt"><b><span style="background: #ffffff">aegisel</span></b></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">
-	are private property and may not be used without permission.<br/>
-All
-	PCB designs, graphics, and content on aegisel.com are protected by
-	copyright. <br/>
-</span></font><font size="2" style="font-size: 10pt"><span style="background: #ffffff">©
-	2015 </span></font></span>
-	</p></li>
-</ul>
-<div id="google_translate_element" dir="ltr"><p align="center"><br/>
-<br/>
+  <main>
+    <section class="hero" id="overview">
+      <div class="wrap">
+        <div class="eyebrow">Limited Run</div>
+        <h1>ASR34 Developer Kit</h1>
+        <p class="lead">
+          ASR34 is a limited-run SDR developer kit designed in Cadence OrCAD PCB Designer for advanced RF experimentation,
+          rapid prototyping, and customer-specific integration. It is intended for engineers who need a modular hardware base
+          rather than a commodity board.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Request Availability</a>
+          <a class="btn btn-secondary" href="#features">View Features</a>
+        </div>
 
-	</p>
-</div>
+        <div class="cards">
+          <div class="card">
+            <h3>Modular RF Architecture</h3>
+            <p>Built around a connector-based platform for RF front-end and daughterboard workflows.</p>
+          </div>
+          <div class="card">
+            <h3>Customer Modifications</h3>
+            <p>Suitable for customer-specific changes, integration work, and small-volume adaptation projects.</p>
+          </div>
+          <div class="card">
+            <h3>Small Batch Release</h3>
+            <p>This run is limited to 35 units, making each board part of a controlled engineering batch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2>Platform features</h2>
+        <p>
+          ASR34 is built as a development platform for advanced RF work, lab validation, and integration tasks.
+          The design supports modular expansion and can be adapted for customer requirements where needed.
+        </p>
+        <ul>
+          <li>Limited-run SDR developer kit.</li>
+          <li>Designed in Cadence OrCAD PCB Designer.</li>
+          <li>Modular RF front-end development concept.</li>
+          <li>Customer-specific integration support available.</li>
+          <li>Suitable for advanced prototyping and low-volume builds.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Design data</h2>
+        <p>
+          For full-batch buyers purchasing all 35 units, design data can be supplied in ASCII/interchange format
+          for import into compatible PCB tools.
+        </p>
+        <div class="quote">
+          The design data is available to full-batch buyers who need to continue the work in supported EDA environments.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="format">
+      <div class="wrap">
+        <h2>Why this release is priced higher</h2>
+        <p>
+          This is a low-volume engineering batch. The unit price reflects design finalisation, handling, testing,
+          assembly coordination, and technical support across a limited number of boards.
+        </p>
+        <p>
+          Buyers are not only purchasing a board; they are getting a platform with modular scope, engineering context,
+          and the option for future adaptation.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p>
+          For availability, quantity requests, or customer-specific modifications, contact Aegisel to discuss the batch.
+        </p>
+        <p class="small">
+          Email: your-email@example.com
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      ASR34 / Aegisel — limited-run SDR developer kit.
+    </div>
+  </footer>
 </body>
 </html>
