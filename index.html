@@ -143,7 +143,10 @@ footer.site-footer{border-top:1px solid var(--border);padding:36px 24px 48px;tex
   <p>ASR34 is built as a development platform for advanced RF work, lab validation and integration tasks. The design supports modular expansion and can be adapted for customer requirements where needed.</p>
   <ul>
     <li>Four sample-aligned receive and four transmit converter channels</li>
+    <li>Single 64 MHz master clock distributed by an AD9513 to both converters, the FPGA and the daughterboards</li>
     <li>Modular RF front ends on four plug-in daughterboard slots</li>
+    <li>Transformer-coupled direct ADC inputs on coax, usable without daughterboards</li>
+    <li>Two external GPIO headers for antenna switches, relays or other 5 V control logic</li>
     <li>Customer-specific integration support available</li>
   </ul>
   <h2 id="specifications">Specifications</h2>
@@ -155,8 +158,13 @@ footer.site-footer{border-top:1px solid var(--border);padding:36px 24px 48px;tex
     <tr><td class="k">FPGA</td><td class="v">Altera Cyclone I EP1C12</td></tr>
     <tr><td class="k">Host interface</td><td class="v">USB 2.0 High-Speed, USB-B<br>Cypress EZ-USB FX2LP</td></tr>
     <tr><td class="k">Daughterboard slots</td><td class="v">4 (RX A, TX A, RX B, TX B), 64-pin</td></tr>
+    <tr><td class="k">Master clock</td><td class="v">64 MHz VCTCXO, 1 ppm VCTCXO option</td></tr>
+    <tr><td class="k">Clock distribution</td><td class="v">AD9513: converters, FPGA, daughterboards</td></tr>
+    <tr><td class="k">FPGA configuration</td><td class="v">Loaded from host over USB at start-up</td></tr>
     <tr><td class="k">Daughterboard control</td><td class="v">SPI, GPIO, I²C with EEPROM board ID</td></tr>
-    <tr><td class="k">Power input</td><td class="v">DC barrel jack</td></tr>
+    <tr><td class="k">Direct ADC inputs</td><td class="v">Transformer-coupled, coax, 1–250 MHz</td></tr>
+    <tr><td class="k">External GPIO</td><td class="v">2 × 10-pin headers (side A, side B)<br>4 FPGA lines each, 10 kΩ pull-up, 5 V, GND<br>Shared with TX daughterboard I/O 9–12</td></tr>
+    <tr><td class="k">Power input</td><td class="v">DC barrel jack, on-board linear regulation</td></tr>
   </table></div>
 
   <h2 id="daughterboards">Daughterboards</h2>
