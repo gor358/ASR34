@@ -114,6 +114,12 @@ footer.site-footer{border-top:1px solid var(--border);padding:36px 24px 48px;tex
 .cards3 .card p{margin:0;color:var(--text-muted);font-size:calc(.85rem * var(--fs));line-height:1.6}
 .quote{border-left:3px solid var(--accent);padding:4px 0 4px 14px;color:var(--text);font-size:calc(.9rem * var(--fs));margin:10px 0 0}
 .mail{font-weight:700;color:var(--accent)}
+.hero h1{white-space:nowrap;font-size:min(calc(clamp(2rem,5.2vw,3.4rem) * var(--fs)),calc((min(100vw,960px) - 48px) / 13.6))}
+.sdr{display:inline-block;cursor:default;outline:none}
+.sdr .x{display:inline-block;max-width:0;overflow:hidden;vertical-align:bottom;white-space:nowrap;transition:max-width .45s ease}
+.sdr:hover .x,.sdr:focus .x,.sdr:focus-within .x{max-width:8ch}
+.sdr:hover,.sdr:focus{color:var(--enig)}
+@media (prefers-reduced-motion:reduce){.sdr .x{transition:none}}
 </style>
 <style>
 /* ae-kit: shared frame for a2e.tech and aegisel pages (width, zoom, header, nav, logo) */
@@ -206,7 +212,7 @@ header.ae-hdr{position:relative;top:auto;z-index:40;height:auto;max-width:var(--
 <script>(function(){var h=document.querySelector('.ae-hdr'),n=h&&h.querySelector('.ae-nav');if(!n)return;var m=n.querySelector('.ae-mark'),touch=window.matchMedia&&matchMedia('(hover:none)').matches;function set(g){n.dataset.sel=g||'';n.classList.toggle('stick',!!g);h.classList.toggle('ae-open',!!g||n.classList.contains('open'));n.querySelectorAll('.ae-l1 button').forEach(function(b){var on=b.dataset.g===g;b.classList.toggle('sel',on);b.setAttribute('aria-expanded',on?'true':'false');});}n.querySelectorAll('.ae-l1 button').forEach(function(b){b.addEventListener('click',function(){set(n.dataset.sel===b.dataset.g?'':b.dataset.g);});});if(touch)m.addEventListener('click',function(e){if(!n.classList.contains('open')){e.preventDefault();n.classList.add('open');h.classList.add('ae-open');}});function close(){n.classList.remove('open');set('');}document.addEventListener('click',function(e){if(!n.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});})();</script>
 <main id="main">
 <section class="hero" id="overview">
-  <h1>Software Defined Radio</h1>
+  <h1><span class="sdr" tabindex="0" aria-label="Software Defined Radio" title="Software Defined Radio"><span aria-hidden="true">S<span class="x">oftware&nbsp;</span>D<span class="x">efined&nbsp;</span>R<span class="x">adio</span></span></span></h1>
   <p class="sub">ASR34 is a SDR developer kit, designed for advanced RF experimentation, rapid prototyping and customer-specific integration. It is intended for engineers who need a modular hardware base rather than a commodity board.</p>
 </section>
 <nav class="section-nav" aria-label="On this page">
