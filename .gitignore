@@ -30,3 +30,18 @@ venv/
 *.kicad_pcb-bak
 *.bak
 *-backups/
+
+# Added: common generated files
+node_modules/
+*~
+*.bk!
+db/
+incremental_db/
+output_files/
+*.rpt
+*.qdf
+*.summary
+.env
+.env.*
+*.pem
+*.key
