@@ -45,3 +45,12 @@ output_files/
 .env.*
 *.pem
 *.key
+
+# A2E hygiene: generated secrets, caches and build output
+.env
+.env.*
+*.key
+*.pem
+node_modules/
+dist/
+.vs/
